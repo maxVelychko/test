@@ -1,23 +1,30 @@
 import React from 'react';
+import useForm from '../hooks/useForm';
 import styles from './Form.module.css';
 import cx from 'classnames';
 
-const Form = () => {
-    const values = {
+const calculate = (inputs) => {
+    return {
+        monthlyPayment: 1, 
+        totalInterestPaid: 1
+    }
+}
+
+const Form = props => {
+    const { values, handleChange } = useForm({
         carPrice: '',
         downPayment: '',
         yearsDuration: '',
         monthsDuration: '',
         interestRate: ''
-    };
+    });
 
     const handleSubmit = event => {
         event.preventDefault();
 
-        /* ToDo */
+        const { monthlyPayment, totalInterestPaid } = calculate(values);
+        props.onSubmit(monthlyPayment, totalInterestPaid);
     };
-
-    const handleChange = event => { /* ToDo */ }
 
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
