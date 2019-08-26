@@ -8,7 +8,7 @@ const App = () => {
         totalInterestPaid: 0
     });
 
-    const updateResults = (monthlyPayment, totalInterestPaid) => {
+    const updateResults = (monthlyPayment = 0, totalInterestPaid = 0) => {
         setResults(state => ({ ...state, monthlyPayment, totalInterestPaid }));
     }
 
@@ -27,9 +27,6 @@ const App = () => {
                         <div className={styles.resultItem}>
                             <p>Total interest paid($)</p>
                             <p className={styles.resultValue}>{results.totalInterestPaid}</p>
-                        </div>
-                        <div className={styles.resultItem}>
-                            <p>Amortization schedule</p>
                         </div>
                     </section>
                 </div>
